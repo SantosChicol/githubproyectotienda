@@ -1,0 +1,36 @@
+<% include partials/_header %>
+
+<div class="container">
+  <div class="row">
+    <!--FORMA-->
+    <div class="col-md-5 offset-md-3">
+      <div class="card btn btn-danger">
+        <div class="card-body">
+          <form action="/edit/<%= task._id %>" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="nombre" placeholder="Ingrese su nombre" value="<%= task.nombre %>">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="apellido" placeholder="ingrese su apellido" value="<%= task.apellido %>">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="producto" cols="80"
+                placeholder="Ingrese producto"
+                ><%= task.producto %></textarea>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="precio" cols="80"
+                  placeholder="Ingrese el precio del producto"
+                  ><%= task.precio %></textarea>
+              </div>
+            <button class="btn btn-primary" type="submit">
+              ACTUALIZAR 
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer%>

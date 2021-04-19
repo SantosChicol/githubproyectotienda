@@ -1,0 +1,75 @@
+<% include partials/_header %>
+
+<div class="container">
+  <div class="row">
+    <!--FORMA-->
+    <div class="col-md-5 offset-md-3">
+      <div class="card btn btn-success">
+        <div class="card-body">
+          <form action="/add" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="nombre" placeholder="Ingrese su nombre">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="apellido" placeholder="Ingrese su apellido">
+              </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="producto" cols="80"
+                      placeholder="Ingrese Producto"
+                      ></textarea>
+                      </div>
+                      <div class="form-group">
+                          <textarea class="form-control" name="precio" cols="80"
+                            placeholder="Ingrese el Precio del Producto"
+                            ></textarea>
+            </div>
+            <button class="btn btn-info" type="submit">
+              ENVIAR
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- LISTA -->
+    <div class="col-md-8 offset-md-2"> <br>
+      <table class="table table-bordered table-hover btn btn btn-dark">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Productos</th>
+            <th>Precio</th>
+            <th>Operaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < tasks.length; i++) { %>
+            <tr>
+              <td><%= i + 1%></td>
+              <td><strong><%= tasks[i].nombre %></strong></td>
+              <td><%= tasks[i].apellido %></td>
+              <td><%= tasks[i].producto %></td>
+              <td><%= tasks[i].precio %></td>
+                <td><a
+                  class="<%= tasks[i].status ? 'btn btn-success' : 'btn btn-dark'%>"
+                  href="/turn/<%= tasks[i]._id %>">HECHO</a>
+                <a href="/delete/<%= tasks[i]._id %>"
+                  class="btn btn-danger">
+                  ELIMINAR
+                </a>
+                <a href="/edit/<%= tasks[i]._id %>" class="btn btn-warning">
+                  EDITAR
+                </a>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </br>
+    </div>
+  </div>
+
+</div>
+
